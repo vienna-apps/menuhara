@@ -858,6 +858,56 @@
   }
 </style>
 
+
+<style>
+  /* Menu Hara official-menu sync 2026-09-28 */
+  html { scroll-behavior: smooth; }
+  #menuTable .menu-name { cursor: help; }
+  .menu-thumb { cursor: help !important; }
+  .quick-nav { position:sticky; top:12px; z-index:40; width:fit-content; max-width:calc(100% - 16px); margin:-12px auto 22px; padding:7px; display:flex; flex-wrap:wrap; justify-content:center; gap:7px; border:1px solid rgba(255,255,255,.42); border-radius:999px; background:rgba(8,31,66,.74); box-shadow:0 12px 32px rgba(2,17,39,.20); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .quick-nav a { display:inline-flex; align-items:center; justify-content:center; min-height:38px; padding:0 14px; border-radius:999px; color:#f7f0df; text-decoration:none; font:700 12px/1 Arial,sans-serif; transition:transform .2s ease,background .2s ease; }
+  .quick-nav a:hover,.quick-nav a:focus-visible { transform:translateY(-2px); background:rgba(255,255,255,.13); outline:none; }
+  .quick-nav .nav-primary { background:#e88755; color:#fff; }
+  .thumb-preview.menu-detail-preview { width:340px; height:auto; min-height:120px; padding:0; overflow:hidden; display:grid; grid-template-columns:118px minmax(0,1fr); border-radius:18px; background:#fffaf0; }
+  .menu-detail-media { min-height:150px; background:#f1eadb; }
+  .menu-detail-media[hidden] { display:none; }
+  .menu-detail-media img { width:100%; height:100%; min-height:150px; object-fit:contain; padding:10px; }
+  .menu-detail-copy { padding:15px 16px 14px; text-align:left; }
+  .menu-detail-meta { color:#e88755; font:800 10px/1.2 Arial,sans-serif; letter-spacing:.08em; text-transform:uppercase; }
+  .menu-detail-name { display:block; margin-top:5px; color:#102b56; font:700 16px/1.25 Georgia,serif; }
+  .thumb-preview .menu-detail-description { margin:7px 0 9px; white-space:normal; overflow:visible; text-overflow:clip; text-align:left; color:#5f6f82; font:12px/1.45 Arial,sans-serif; }
+  .menu-detail-price { color:#102b56; font:800 13px/1 Arial,sans-serif; }
+  .thumb-preview.menu-detail-preview .menu-detail-media[hidden] + .menu-detail-copy { grid-column:1 / -1; }
+  .submit-section { position:relative; margin:30px auto 8px; padding:clamp(24px,5vw,44px); overflow:hidden; text-align:center; color:#f7f0df; border:1px solid rgba(255,255,255,.34); border-radius:22px; background:radial-gradient(circle at 10% 5%,rgba(232,135,85,.25),transparent 30%),linear-gradient(145deg,rgba(25,63,113,.96),rgba(7,27,58,.97)); box-shadow:0 22px 55px rgba(3,15,36,.32); }
+  .submit-section::after { content:"✦"; position:absolute; right:25px; top:18px; color:#e88755; font-size:23px; }
+  .submit-kicker { margin:0 0 9px; color:#f2a47d; font:800 11px/1.3 Arial,sans-serif; letter-spacing:.18em; text-transform:uppercase; }
+  .submit-section h2 { margin:0; font-size:clamp(29px,5vw,46px); font-weight:500; line-height:1.05; }
+  .submit-copy { max-width:650px; margin:13px auto 0; color:#dbe5f0; font-size:15px; line-height:1.65; }
+  .deadline-date { display:inline-flex; align-items:center; gap:7px; margin-top:14px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.1); color:#fff7e8; font:12px/1.4 Arial,sans-serif; }
+  .countdown { display:grid; grid-template-columns:repeat(4,minmax(76px,110px)); justify-content:center; gap:9px; margin:22px auto 16px; }
+  .countdown-unit { padding:13px 8px 11px; border:1px solid rgba(255,255,255,.18); border-radius:14px; background:rgba(255,255,255,.08); }
+  .countdown-value { display:block; font:700 clamp(24px,5vw,32px)/1 Arial,sans-serif; color:#fff; font-variant-numeric:tabular-nums; }
+  .countdown-label { display:block; margin-top:7px; color:#c8d8eb; font:700 9px/1 Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+  .deadline-status { min-height:20px; margin:0 0 17px; color:#f4dccb; font:700 12px/1.4 Arial,sans-serif; }
+  .submit-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+  .submit-actions a { display:inline-flex; min-height:46px; align-items:center; justify-content:center; padding:0 18px; border-radius:999px; text-decoration:none; font:800 13px/1 Arial,sans-serif; transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease; }
+  .submit-actions a:hover,.submit-actions a:focus-visible { transform:translateY(-2px); box-shadow:0 10px 25px rgba(0,0,0,.18); outline:none; }
+  .submit-main { background:#e88755; color:#fff; }
+  .submit-secondary { color:#f7f0df; border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.08); }
+  .submit-main.is-expired { opacity:.45; pointer-events:none; }
+  .page-jump { position:fixed; right:17px; bottom:17px; z-index:60; display:grid; gap:7px; }
+  .page-jump button { width:43px; height:43px; border:1px solid rgba(255,255,255,.52); border-radius:999px; background:rgba(8,31,66,.84); color:#fff; box-shadow:0 9px 24px rgba(2,17,39,.24); backdrop-filter:blur(11px); cursor:pointer; font:700 18px/1 Arial,sans-serif; transition:transform .2s ease,background .2s ease; }
+  .page-jump button:hover,.page-jump button:focus-visible { transform:translateY(-2px) scale(1.04); background:#e88755; outline:none; }
+  @media (max-width:700px) {
+    .quick-nav { position:relative; top:auto; width:100%; max-width:100%; margin-top:-8px; border-radius:16px; }
+    .quick-nav a { flex:1 1 auto; padding-inline:11px; }
+    .thumb-preview.menu-detail-preview { grid-template-columns:88px minmax(0,1fr); }
+    .menu-detail-media,.menu-detail-media img { min-height:120px; }
+    .countdown { grid-template-columns:repeat(2,minmax(92px,1fr)); max-width:330px; }
+    .page-jump { right:10px; bottom:10px; }
+  }
+</style>
+
 </head>
 <body>
 
@@ -887,6 +937,13 @@
     <div class="ornament">✦  ·  ☾  ·  ✦</div>
   </header>
 
+  <nav class="quick-nav" aria-label="Akses cepat">
+    <a href="#menuTable">Menu</a>
+    <a href="https://drive.google.com/file/d/1iXiiBxxVsLp3Juh7JS5q3L2pNojh9Sbk/view" target="_blank" rel="noopener">Cek menu lebih lengkap ↗</a>
+    <a href="#submit-order">Ke bagian submit ↓</a>
+    <a class="nav-primary" href="https://forms.gle/WxxAnRPcHv34kQoN7" target="_blank" rel="noopener">Submit pesanan ↗</a>
+  </nav>
+
   <section class="menu-card">
     <div class="menu-layout">
       <div class="menu-list">
@@ -907,8 +964,9 @@
       <option value="Desserts">Desserts</option>
       <option value="Classic Coffee">Classic Coffee</option>
       <option value="Signature Coffee">Signature Coffee</option>
-      <option value="Cold Brew">Cold Brew</option>
+      <option value="Cold Brew Based">Cold Brew Based</option>
       <option value="Matcha & Cocoa">Matcha & Cocoa</option>
+      <option value="Add-ons">Add-ons</option>
       <option value="Artisan Tea">Artisan Tea</option>
       <option value="Tea">Tea</option>
       <option value="Mocktails">Mocktails</option>
@@ -947,7 +1005,7 @@
       <tr><td>Salmon Goma Salad</td><td>Sweets & Salads</td><td>75</td></tr>
       <tr><td>Salmon Ceasar Salad</td><td>Sweets & Salads</td><td>75</td></tr>
       <tr><td>Grilled Chicken Miso Vinaigrette Salad</td><td>Sweets & Salads</td><td>59</td></tr>
-      <tr><td>Chicken Quesaddilas</td><td>Savouries</td><td>45</td></tr>
+      <tr><td>Chicken Quesadillas</td><td>Savouries</td><td>45</td></tr>
       <tr><td>Hara Tacos</td><td>Savouries</td><td>55</td></tr>
       <tr><td>Hara Nachos</td><td>Savouries</td><td>69</td></tr>
       <tr><td>Butter Cheese Sandwich</td><td>Savouries</td><td>62</td></tr>
@@ -959,10 +1017,11 @@
       <tr><td>Sweet Corn and Carrot Soup</td><td>Soups</td><td>35</td></tr>
       <tr><td>Chicken Soup</td><td>Soups</td><td>40</td></tr>
       <tr><td>Mushroom Soup</td><td>Soups</td><td>42</td></tr>
-      <tr><td>Add-on: Upgrade to Sourdough Bread</td><td>Soups</td><td>15</td></tr>
+      <tr><td>Upgrade garlic bread with sourdough bread</td><td>Soups</td><td>15</td></tr>
       <tr><td>Hara Big Breakfast</td><td>Brunch</td><td>82</td></tr>
       <tr><td>Mushroom Melt Toast</td><td>Brunch</td><td>65</td></tr>
       <tr><td>Sourdough Egg Benedict</td><td>Brunch</td><td>89</td></tr>
+      <tr><td>Butter Cheese Sandwich</td><td>Brunch</td><td>62</td></tr>
       <tr><td>Chicken and Egg Sandwich</td><td>Brunch</td><td>68</td></tr>
       <tr><td>French Breakfast</td><td>Brunch</td><td>62</td></tr>
       <tr><td>Oxtail Fried</td><td>Indonesian</td><td>135</td></tr>
@@ -1018,42 +1077,58 @@
       <tr><td>Matcha Lava Cake</td><td>Desserts</td><td>49</td></tr>
       <tr><td>Crêpes Suzette</td><td>Desserts</td><td>45</td></tr>
       <tr><td>Double Ristretto</td><td>Classic Coffee</td><td>25</td></tr>
-      <tr><td>Hot / Ice Black Coffee</td><td>Classic Coffee</td><td>35</td></tr>
+      <tr><td>Black Coffee Hot</td><td>Classic Coffee</td><td>35</td></tr>
+      <tr><td>Black Coffee Ice</td><td>Classic Coffee</td><td>35</td></tr>
       <tr><td>Latte Hot</td><td>Classic Coffee</td><td>35</td></tr>
       <tr><td>Latte Ice</td><td>Classic Coffee</td><td>38</td></tr>
-      <tr><td>Cappuccino Hot / Magic Hot / Affogato</td><td>Classic Coffee</td><td>35</td></tr>
+      <tr><td>Cappuccino Hot</td><td>Classic Coffee</td><td>35</td></tr>
+      <tr><td>Magic Hot</td><td>Classic Coffee</td><td>35</td></tr>
+      <tr><td>Affogato</td><td>Classic Coffee</td><td>35</td></tr>
       <tr><td>Hara Iced Coffee</td><td>Signature Coffee</td><td>35</td></tr>
       <tr><td>Salted Caramel Cloud Latte</td><td>Signature Coffee</td><td>38</td></tr>
       <tr><td>Hazelnut Caramel Latte</td><td>Signature Coffee</td><td>40</td></tr>
       <tr><td>Pistachio Cloud Latte</td><td>Signature Coffee</td><td>42</td></tr>
       <tr><td>Sea Salt Cloud Latte Ice</td><td>Signature Coffee</td><td>40</td></tr>
-      <tr><td>Punchpresso / Peach Coffee / Dark Berry</td><td>Signature Coffee</td><td>40</td></tr>
-      <tr><td>Mont Blanc</td><td>Signature Coffee</td><td>43</td></tr>
+      <tr><td>Punchpresso</td><td>Signature Coffee</td><td>40</td></tr>
+      <tr><td>Peach Coffee</td><td>Signature Coffee</td><td>40</td></tr>
+      <tr><td>Dark Berry</td><td>Cold Brew Based</td><td>40</td></tr>
+      <tr><td>Mont Blanc</td><td>Cold Brew Based</td><td>43</td></tr>
       <tr><td>Yuzu Coffee</td><td>Signature Coffee</td><td>37</td></tr>
-      <tr><td>Cold Brew</td><td>Cold Brew</td><td>35</td></tr>
+      <tr><td>Cold Brew</td><td>Cold Brew Based</td><td>35</td></tr>
       <tr><td>Matcha Latte Hot</td><td>Matcha & Cocoa</td><td>35</td></tr>
       <tr><td>Matcha Latte Ice</td><td>Matcha & Cocoa</td><td>38</td></tr>
       <tr><td>Chocolate Hot</td><td>Matcha & Cocoa</td><td>35</td></tr>
       <tr><td>Chocolate Ice</td><td>Matcha & Cocoa</td><td>38</td></tr>
       <tr><td>Matchagato</td><td>Matcha & Cocoa</td><td>37</td></tr>
-      <tr><td>Add-on: Espresso Shot</td><td>Matcha & Cocoa</td><td>15</td></tr>
-      <tr><td>Add-on: Oat Milk</td><td>Matcha & Cocoa</td><td>7</td></tr>
-      <tr><td>Chamomile / Blue Harmony / Queen's Choice / New Year Fest</td><td>Artisan Tea</td><td>39</td></tr>
+      <tr><td>Espresso Shot</td><td>Add-ons</td><td>15</td></tr>
+      <tr><td>Oat Milk</td><td>Add-ons</td><td>7</td></tr>
+      <tr><td>Chamomile</td><td>Artisan Tea</td><td>39</td></tr>
+      <tr><td>Blue Harmony</td><td>Artisan Tea</td><td>39</td></tr>
+      <tr><td>Queen's Choice</td><td>Artisan Tea</td><td>39</td></tr>
+      <tr><td>New Year Fest</td><td>Artisan Tea</td><td>39</td></tr>
       <tr><td>Hot Lemon Tea</td><td>Tea</td><td>32</td></tr>
       <tr><td>Ice Lemon Tea</td><td>Tea</td><td>35</td></tr>
-      <tr><td>Green Tea Jasmine / English Breakfast</td><td>Tea</td><td>28</td></tr>
+      <tr><td>Green Tea Jasmine</td><td>Tea</td><td>28</td></tr>
+      <tr><td>English Breakfast</td><td>Tea</td><td>28</td></tr>
       <tr><td>Ice Lychee Tea</td><td>Tea</td><td>35</td></tr>
       <tr><td>Ice Regular Tea</td><td>Tea</td><td>26</td></tr>
-      <tr><td>Passion Fruit Tea</td><td>Tea</td><td>37</td></tr>
-      <tr><td>Berry Iced Tea</td><td>Tea</td><td>38</td></tr>
-      <tr><td>Strawberry Mojito / Lychee Mojito</td><td>Mocktails</td><td>45</td></tr>
-      <tr><td>Virgin Mojito / Lemon Squash</td><td>Mocktails</td><td>42</td></tr>
-      <tr><td>Yellow Submarine / Greenrush / Citrusblast / Detox</td><td>Smoothies & Juice</td><td>42</td></tr>
+      <tr><td>Passion Fruit Tea</td><td>Mocktails</td><td>37</td></tr>
+      <tr><td>Berry Iced Tea</td><td>Mocktails</td><td>38</td></tr>
+      <tr><td>Strawberry Mojito</td><td>Mocktails</td><td>45</td></tr>
+      <tr><td>Lychee Mojito</td><td>Mocktails</td><td>45</td></tr>
+      <tr><td>Virgin Mojito</td><td>Mocktails</td><td>42</td></tr>
+      <tr><td>Lemon Squash</td><td>Mocktails</td><td>49</td></tr>
+      <tr><td>Yellow Submarine</td><td>Mocktails</td><td>42</td></tr>
+      <tr><td>Greenrush</td><td>Smoothies & Juice</td><td>42</td></tr>
+      <tr><td>Citrusblast</td><td>Smoothies & Juice</td><td>42</td></tr>
+      <tr><td>Detox</td><td>Smoothies & Juice</td><td>42</td></tr>
       <tr><td>Orange Smoothies</td><td>Smoothies & Juice</td><td>47</td></tr>
       <tr><td>Red Smoothies</td><td>Smoothies & Juice</td><td>45</td></tr>
-      <tr><td>Watermelon / Strawberry</td><td>Smoothies & Juice</td><td>39</td></tr>
-      <tr><td>Pineapple Orange</td><td>Smoothies & Juice</td><td>42</td></tr>
-      <tr><td>Honey Lemon</td><td>Smoothies & Juice</td><td>49</td></tr>
+      <tr><td>Watermelon</td><td>Smoothies & Juice</td><td>39</td></tr>
+      <tr><td>Strawberry</td><td>Smoothies & Juice</td><td>42</td></tr>
+      <tr><td>Pineapple</td><td>Smoothies & Juice</td><td>39</td></tr>
+      <tr><td>Orange</td><td>Smoothies & Juice</td><td>42</td></tr>
+      <tr><td>Honey Lemon</td><td>Mocktails</td><td>42</td></tr>
     </tbody>
       </table>
     </div>
@@ -1082,6 +1157,29 @@
     </div>
   </section>
 
+
+  <section class="submit-section" id="submit-order" aria-labelledby="submitTitle">
+    <p class="submit-kicker">Pesanan Hara</p>
+    <h2 id="submitTitle">Sudah selesai pilih menu?</h2>
+    <p class="submit-copy">Kirim pilihan pesanan lewat form. Pastikan sudah submit sebelum batas waktu supaya pesananmu ikut direkap.</p>
+    <div class="deadline-date">⏳ Paling telat submit: <strong>1 Oktober 2026 · 23:59 WIB</strong></div>
+    <div class="countdown" id="orderCountdown" aria-live="polite">
+      <div class="countdown-unit"><span class="countdown-value" id="cdDays">00</span><span class="countdown-label">Hari</span></div>
+      <div class="countdown-unit"><span class="countdown-value" id="cdHours">00</span><span class="countdown-label">Jam</span></div>
+      <div class="countdown-unit"><span class="countdown-value" id="cdMinutes">00</span><span class="countdown-label">Menit</span></div>
+      <div class="countdown-unit"><span class="countdown-value" id="cdSeconds">00</span><span class="countdown-label">Detik</span></div>
+    </div>
+    <p class="deadline-status" id="deadlineStatus">Menghitung waktu tersisa…</p>
+    <div class="submit-actions">
+      <a class="submit-main" id="submitOrderButton" href="https://forms.gle/WxxAnRPcHv34kQoN7" target="_blank" rel="noopener">Submit pesanan sekarang ↗</a>
+      <a class="submit-secondary" href="https://drive.google.com/file/d/1iXiiBxxVsLp3Juh7JS5q3L2pNojh9Sbk/view" target="_blank" rel="noopener">Buka menu lengkap ↗</a>
+    </div>
+  </section>
+  <div class="page-jump" aria-label="Navigasi halaman">
+    <button type="button" id="jumpTop" aria-label="Kembali ke atas" title="Ke atas">↑</button>
+    <button type="button" id="jumpBottom" aria-label="Ke bagian submit" title="Ke bagian submit">↓</button>
+  </div>
+
   <p class="footer-note">Made for slow evenings, good food &amp; warm conversations ✦</p>
 </div>
 
@@ -1095,7 +1193,7 @@ const MENU_IMAGES = {
 "Tenderloin Salad": "assets/menu/menu-005.webp",
 "Salmon Goma Salad": "assets/menu/menu-006.webp",
 "Salmon Ceasar Salad": "assets/menu/menu-007.webp",
-"Chicken Quesaddilas": "assets/menu/menu-008.webp",
+"Chicken Quesadillas": "assets/menu/menu-008.webp",
 "Hara Tacos": "assets/menu/menu-009.webp",
 "Hara Nachos": "assets/menu/menu-010.webp",
 "Butter Cheese Sandwich": "assets/menu/menu-011.webp",
@@ -1162,7 +1260,7 @@ const MENU_IMAGES = {
 "Pistachio Cloud Latte": "assets/menu/menu-072.webp",
 "Sea Salt Cloud Latte Ice": "assets/menu/menu-073.webp",
 "Hazelnut Caramel Latte": "assets/menu/menu-074.webp",
-"Punchpresso / Peach Coffee / Dark Berry": "assets/menu/menu-075.webp",
+"Punchpresso": "assets/menu/menu-075.webp",
 "Yuzu Coffee": "assets/menu/menu-076.webp",
 "Cold Brew": "assets/menu/menu-077.webp",
 "Mont Blanc": "assets/menu/menu-078.webp",
@@ -1171,14 +1269,29 @@ const MENU_IMAGES = {
 "Chocolate Ice": "assets/menu/menu-081.webp",
 "Berry Iced Tea": "assets/menu/menu-082.webp",
 "Passion Fruit Tea": "assets/menu/menu-083.webp",
-"Strawberry Mojito / Lychee Mojito": "assets/menu/menu-084.webp",
-"Yellow Submarine / Greenrush / Citrusblast / Detox": "assets/menu/menu-085.webp",
+"Strawberry Mojito": "assets/menu/menu-084.webp",
+"Yellow Submarine": "assets/menu/menu-085.webp",
 "Red Smoothies": "assets/menu/menu-086.webp",
 "Hara Big Breakfast": "assets/menu/menu-087.webp",
 "Mushroom Melt Toast": "assets/menu/menu-088.webp",
 "Sourdough Egg Benedict": "assets/menu/menu-089.webp",
 "Chicken and Egg Sandwich": "assets/menu/menu-090.webp"
 };
+
+
+const MENU_DESCRIPTIONS = {"sweets & salads||cakue pandan custard":"Crispy fried cakue, pandan custard sauce","sweets & salads||cheese banana fritter":"Golden-fried bananas, drizzled honey, creamy cheese, fresh strawberries","sweets & salads||cassava thai sauce":"Sweet cassava, homemade coconut sauce","sweets & salads||tenderloin salad":"Mixed greens, slices of beef tenderloin, house-made special dressing","sweets & salads||chicken ceasar salad":"Crisp romaine lettuce, black olives, crunchy croutons, juicy cherry tomatoes with Caesar dressing with grilled chicken","sweets & salads||salmon goma salad":"Mix of greens, cherry tomatoes, deep fried garlic, sweet corn kernels, lemon wedge, Goma dressing, and grilled salmon fillet","sweets & salads||grilled chicken miso vinaigrette salad":"Romaine lettuce, mesclun, croutons, cherry tomatoes, miso vinaigrette sauce, roasted sesame seeds, and grilled chicken","sweets & salads||salmon ceasar salad":"Crisp romaine lettuce, black olives, crunchy croutons, juicy cherry tomatoes with Caesar dressing with grilled salmon","savouries||chicken quesadillas":"Tortillas stuffed with chicken breast, diced bell papers, onions, with mayo, salsa, guacamole, sweet corn kennels","savouries||hara nachos":"Fried tortilla, homemade beef con carne, red beans, mozarella, tomato salsa","savouries||hara tacos":"Baked corn tortillas, beef con carne, fresh guacamole, crisp iceberg lettuce, zesty tomato salsa, creamy red cheddar cheese sauce","savouries||butter cheese sandwich":"Whole wheat bread with smoked beef and cheese","savouries||holland croquette":"Crispy Holland croquettes, Hanoi sauce","savouries||crispy potato":"Homemade potato chips, beef con carne, jalapenos","savouries||mix platter":"Onion rings, sausages, chicken wings, crispy chicken, and french fries with dipping sauce","savouries||umami fries":"Deep-fried french fries, umami seasonings","savouries||bbq chicken wings":"Chicken wings, lime, Hanoi sauce","soups||sweet corn and carrot soup":"Warm corn and carrot soup, sourdough bread","soups||chicken soup":"Chicken in cream and vegetable stock, sourdough bread","soups||mushroom soup":"Creamy mushroom in vegetable stock, sourdough bread","brunch||mushroom melt toast":"Whole wheat bread, sauteed mushroom, spinach, mozarella cheese, with omelette and side salad","brunch||hara big breakfast":"Scrambled eggs, bratwurst, baked tomatoes, mixed greens, toasted bread, and sauteed mushrooms","brunch||sourdough egg benedict":"Poached eggs served on toasted bread, ham and classic hollandaise sauce","brunch||chicken and egg sandwich":"Soft bread filled with chicken, egg, and fresh greens","brunch||butter cheese sandwich":"Two slices of whole wheat bread filled with smoked beef and melted smoked cheese, cooked to perfection with butter","brunch||french breakfast":"French toast, fluffy omelette, chicken ham, sauteed mushroom, baked tomatoes, and fresh lettuce","indonesian||oxtail fried":"Crispy fried oxtail, steamed rice, crunchy melinjo crackers","indonesian||spicy fried oxtail":"Deep fried oxtail, sauteed green chili, Hainan rice","indonesian||oxtail sambal matah":"Deep fried oxtail, sambal matah, steamed rice, and side salad","indonesian||soto betawi":"Soto betawi with steamed rice and crispy melinjo crackers","indonesian||oxtail soup":"Traditional indonesian oxtail soup, steamed rice, and melinjo crackers","indonesian||soup iga asam pedas":"Tender ribs, steamed rice, and melinjo crackers","indonesian||hara soto ayam":"Chicken soto with steamed rice and crispy melinjo crackers","indonesian||green chilli fried rice":"Green chili paste fried rice, chicken satay, fried egg, melinjo crackers, and pickles","indonesian||teri fried rice":"Fried rice with salted anchovies, sunny side up egg, melinjo crackers, and tangy pickles","indonesian||bubur ayam kampung":"Chicken porridge, crackers, kuah soto, egg","indonesian||kampung fried rice":"Traditional indonesian fried rice, savoury meatballs, sunny side up egg, crispy fried chicken, sambal matah, crackers, and pickles","indonesian||yangzhou fried rice":"Oriental fried rice with smoked beef, green peas, sunny-side-up egg, prawn crackers, and tangy pickles","indonesian||hara fried rice":"Hara's signature fried rice with diced chicken, sunny-side-up egg, prawn crackers, and tangy pickles","indonesian||mie goreng":"Homemade noodles, fresh vegetables, savory seasonings","indonesian||ayam bakar taliwang":"Grilled aromatic Taliwang chicken, jasmine steamed rice, sambal beberok, plecing kangkung, fresh lemon basil","indonesian||mie godog":"Homemade noodle, shredded chicken breast, topped with fresh vegetables","indonesian||timbel rice chicken":"Timbel rice, fried chicken with coconut flakes, fried tofu and tempeh, perkedel, salted fish, homade chili sauce with sayur asam and mixed vegetables","indonesian||chicken satay":"Chicken satay, steamed rice, tangy pickles, spicy soy sauce, and peanut sauce","indonesian||sate kambing tegal":"Sate kambing muda, steamed rice, tangy pickles, spicy soy sauce, and peanut sauce","indonesian||bandeng sambal matah":"Deep fried bandeng, sambal matah, homemade chili sauce, steamed rice, mixed vegetables","asian||fish mentai rice":"Crispy deep-fried dory fish topped with homemade mentai sauce, served with steamed Japanese rice and small side salad","asian||salmon teriyaki":"Salmon fillet marinated in teriyaki sauce, served with fried egg, steamed rice, and mix vegetables","asian||chicken katsu curry":"Japanese-style curry rice topped with crispy deep fried chicken breast and side salad","asian||saikoro steak":"Grilled diced beef cubes, Japanese rice, ponzu sauce","asian||dabu dabu chicken":"Crispy chicken breast, fresh mixed cabbage salad, steamed rice, and side of sambal dabu-dabu","asian||chicken nanban":"Deep fried chicken leg topped with nanban sauce and tartar dressing, served with steamed Japanese rice and side salad","asian||garlic ginger chicken chop":"Roasted chicken with ginger and garlic soy dressing, with Hainan rice","asian||gyuniku":"Grilled Australian beef marinated in savoury yakiniku sauce, steamed Japanese rice","asian||tom yam salmon head":"Fragrant and spicy Tom Yum soup with salmon head, prawns, mushroom, and fresh baby string beans","asian||grilled chicken noodle":"Springy noodles, topped with juicy grilled chicken, bok choy, fresh scallions, and crispy wonton strips.","western||chicken parmigiana":"Crispy oven-baked chicken leg, melted mozarella, homemade tomato sauze, linguini, side salad","western||chicken schnitzel":"Crispy chicken breast, shoestring potatoes, fresh coleslaw, and homemade white sauce","western||salmon pesto":"Grilled salmon, creamy mashed potatoes, mixed greens, sweet corn, vibrant pesto sauce","western||tokyo special burger":"Beef patty, fresh tomatoes, masclun greens, sauteed onions, capsicum, barbecue sauce, and french fries","western||hara us striploin steak":"Grilled Australian beef on hot stone, creamy mashed potatoes, fresh vegetables","western||hara tenderloin steak":"Grilled beef tenderloin on hot stone, homemade spinach beefcake, fresh vegetables","western||steak diane":"Tenderloin steak, Diane sauce, cheesy potatoes, asparagus, alfalfa","western||jamaican chicken steak":"Roasted chicken leg, orange sauce, Lyonnaise potatoes, crisp string beans, and fresh sunkist oranges","western||australian grill":"Sliced grilled Australian beef, butter rice, creamy cheesy sauce, and pesto sauce","pasta||spaghetti beef bacon aglio olio":"Spaghetti, beef bacon, cherry tomatoes, and fresh parsley","pasta||spaghetti salmon aglio olio":"Spaghetti, salmon, cherry tomatoes, and fresh parsley","pasta||penne pesto with chicken":"Penne pasta in pesto sauce, tender grilled chicken breast","pasta||bolognese spaghettini":"Spaghetti tossed with ground beef in fresh tomato sauce, parmesan cheese, crispy garlic bread","pasta||mac & cheese":"Macaroni pasta, cheddar cheese, topped with roasted beef","pasta||tenderloin creamy pasta":"Linguine pasta in creamy sauce, beef tenderloin, parmesan cheese, crispy garlic bread","pasta||beef creamy truffle rigatoni":"Rigatoni pasta with creamy truffle sauce, roasted beef","desserts||milky toast tiramisu":"Classic french toast with creamy tiramisu flavors with a scoop of vanilla ice cream","desserts||milky toast matcha":"Classic french toast with creamy matcha flavors with a scoop of vanilla ice cream","desserts||berries pancakes":"Fluffy pancakes topped with fresh strawberries, mulberries, and blueberries, drizzled with vibrant raspberry sauce","desserts||fruity waffle":"Hara's homemade waffles, served with creamy vanilla ice cream and fresh fruits","desserts||chocolate lava cake":"Warm chocolate cake filled with molten chocolate, topped with vanilla ice cream and caramelized almonds","desserts||matcha lava cake":"Warm chocolate cake filled with molten matcha, topped with vanilla ice cream and caramelized almonds","desserts||crepes suzette":"Delicate crepes, orange marmalade, fresh Sunkist oranges, a scoop of ice cream, orange butter roll, a sprinkle of sliced almonds","seasonal specials||burnt basque cheesecake set":"Our signature Burnt Basque Cheesecake, served with a delicate cloud of Whipped Cream and the crunch of Salted Almond Crumbs, paired thoughtfully with your choice of handcrafted coffee: Hara Iced Coffee, Cappuccino, Latte, or Black Coffee.","soups||upgrade garlic bread with sourdough bread":"Upgrade garlic bread with sourdough bread."};
+
+function descriptionKey(name, category) {
+  const clean = value => String(value || "")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, " ").trim();
+  return clean(category) + "||" + clean(name);
+}
+function getMenuDescription(name, category) {
+  return MENU_DESCRIPTIONS[descriptionKey(name, category)]
+    || (name + " — kategori " + category + ". Menu resmi Hara mencantumkan nama dan harga tanpa deskripsi bahan individual.");
+}
+
   </script>
 
   <script>
@@ -1429,49 +1542,81 @@ const MENU_IMAGES = {
     return thumb;
   }
 
+
   const thumbPreview = document.createElement("div");
-  thumbPreview.className = "thumb-preview";
+  thumbPreview.className = "thumb-preview menu-detail-preview";
   thumbPreview.setAttribute("aria-hidden", "true");
-  thumbPreview.innerHTML = "<img alt=''><p></p>";
+  thumbPreview.innerHTML = `
+    <div class="menu-detail-media"><img alt=""></div>
+    <div class="menu-detail-copy">
+      <div class="menu-detail-meta"></div>
+      <strong class="menu-detail-name"></strong>
+      <p class="menu-detail-description"></p>
+      <div class="menu-detail-price"></div>
+    </div>`;
   document.body.appendChild(thumbPreview);
 
-  function showPreview(thumb) {
-    const img = thumb.querySelector("img");
-    if (!img) return;
-    thumbPreview.querySelector("img").src = img.src;
-    thumbPreview.querySelector("p").textContent = thumb.dataset.previewName || "";
-    const rect = thumb.getBoundingClientRect();
-    const size = 240;
-    const gap = 12;
-    let left = rect.right + gap;
-    if (left + size > window.innerWidth - 8) left = Math.max(8, rect.left - size - gap);
-    const top = Math.min(Math.max(8, rect.top + rect.height / 2 - size / 2), window.innerHeight - size - 8);
-    thumbPreview.style.left = left + "px";
-    thumbPreview.style.top = top + "px";
-    thumbPreview.classList.add("is-visible");
-  }
+  function showPreviewFromRow(row, anchor) {
+    if (!row || !anchor) return;
+    const name = row.dataset.itemName || "";
+    const category = row.dataset.itemCategory || "";
+    const description = row.dataset.itemDescription || getMenuDescription(name, category);
+    const price = Number(row.dataset.itemPrice) || 0;
+    const img = row.querySelector(".menu-thumb.has-photo img");
+    const media = thumbPreview.querySelector(".menu-detail-media");
+    const previewImg = media.querySelector("img");
+    if (img) {
+      previewImg.src = img.src; previewImg.alt = name; media.hidden = false;
+    } else {
+      previewImg.removeAttribute("src"); previewImg.alt = ""; media.hidden = true;
+    }
+    thumbPreview.querySelector(".menu-detail-meta").textContent = category;
+    thumbPreview.querySelector(".menu-detail-name").textContent = name;
+    thumbPreview.querySelector(".menu-detail-description").textContent = description;
+    thumbPreview.querySelector(".menu-detail-price").textContent = formatRupiah(price);
 
+    const rect = anchor.getBoundingClientRect();
+    const width = Math.min(360, Math.max(280, window.innerWidth - 24));
+    thumbPreview.style.width = width + "px";
+    thumbPreview.style.left = "12px"; thumbPreview.style.top = "12px";
+    thumbPreview.classList.add("is-visible");
+    const card = thumbPreview.getBoundingClientRect();
+    let left = rect.right + 12;
+    if (left + card.width > window.innerWidth - 10) left = rect.left - card.width - 12;
+    if (left < 10) left = Math.max(10, (window.innerWidth - card.width) / 2);
+    let top = rect.top + rect.height / 2 - card.height / 2;
+    top = Math.max(10, Math.min(top, window.innerHeight - card.height - 10));
+    thumbPreview.style.left = left + "px"; thumbPreview.style.top = top + "px";
+    thumbPreview.setAttribute("aria-hidden", "false");
+  }
   function hidePreview() {
     thumbPreview.classList.remove("is-visible");
+    thumbPreview.setAttribute("aria-hidden", "true");
   }
-
   document.addEventListener("mouseover", event => {
-    const thumb = event.target.closest?.(".menu-thumb.has-photo");
-    if (thumb) showPreview(thumb);
+    const target = event.target.closest?.(".menu-thumb, .menu-name");
+    const row = target?.closest?.("tr[data-item-name]");
+    if (target && row) showPreviewFromRow(row, target);
   });
   document.addEventListener("mouseout", event => {
-    if (event.target.closest?.(".menu-thumb.has-photo")) hidePreview();
+    if (event.target.closest?.(".menu-thumb, .menu-name")) hidePreview();
   });
   document.addEventListener("focusin", event => {
-    if (event.target.matches?.(".menu-thumb.has-photo")) showPreview(event.target);
+    const target = event.target.closest?.(".menu-thumb, .menu-name");
+    const row = target?.closest?.("tr[data-item-name]");
+    if (target && row) showPreviewFromRow(row, target);
   });
-  document.addEventListener("focusout", hidePreview);
+  document.addEventListener("focusout", event => {
+    if (event.target.closest?.(".menu-thumb, .menu-name")) hidePreview();
+  });
   document.addEventListener("click", event => {
-    const thumb = event.target.closest?.(".menu-thumb.has-photo");
-    if (thumb) showPreview(thumb);
-    else hidePreview();
+    const target = event.target.closest?.(".menu-thumb, .menu-name");
+    const row = target?.closest?.("tr[data-item-name]");
+    if (target && row) showPreviewFromRow(row, target);
+    else if (!event.target.closest?.(".menu-detail-preview")) hidePreview();
   });
   window.addEventListener("scroll", hidePreview, { passive: true });
+  window.addEventListener("resize", hidePreview);
 
   function setupChecklist() {
     tbody.querySelectorAll("tr").forEach((row, index) => {
@@ -1485,6 +1630,7 @@ const MENU_IMAGES = {
       row.dataset.itemId = "hara-item-" + index;      row.dataset.itemName = name;
       row.dataset.itemCategory = category;
       row.dataset.itemPrice = price;
+      row.dataset.itemDescription = getMenuDescription(name, category);
 
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
@@ -1500,6 +1646,9 @@ const MENU_IMAGES = {
       nameCell.appendChild(createThumb(name, category));
       const label = document.createElement("span");
       label.className = "menu-name";
+      label.tabIndex = 0;
+      label.setAttribute("role", "button");
+      label.setAttribute("aria-label", "Lihat deskripsi " + name);
       label.textContent = name;
       nameCell.appendChild(label);
     });
@@ -1727,5 +1876,29 @@ const MENU_IMAGES = {
   });
 
 </script>
+
+<script>
+(() => {
+  const deadline=new Date("2026-10-01T23:59:59+07:00").getTime();
+  const pad=n=>String(Math.max(0,n)).padStart(2,"0");
+  const submit=document.getElementById("submitOrderButton");
+  const status=document.getElementById("deadlineStatus");
+  function updateOrderCountdown(){
+    const diff=deadline-Date.now(),safe=Math.max(0,diff);
+    const days=Math.floor(safe/86400000),hours=Math.floor((safe%86400000)/3600000),minutes=Math.floor((safe%3600000)/60000),seconds=Math.floor((safe%60000)/1000);
+    document.getElementById("cdDays").textContent=pad(days);
+    document.getElementById("cdHours").textContent=pad(hours);
+    document.getElementById("cdMinutes").textContent=pad(minutes);
+    document.getElementById("cdSeconds").textContent=pad(seconds);
+    if(diff<=0){status.textContent="Batas waktu submit sudah lewat.";submit?.classList.add("is-expired");submit?.setAttribute("aria-disabled","true");}
+    else if(days===0){status.textContent="Hari terakhir untuk submit pesanan.";}
+    else{status.textContent="Masih ada "+days+" hari untuk submit pesanan.";}
+  }
+  updateOrderCountdown(); setInterval(updateOrderCountdown,1000);
+  document.getElementById("jumpTop")?.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+  document.getElementById("jumpBottom")?.addEventListener("click",()=>document.getElementById("submit-order")?.scrollIntoView({behavior:"smooth",block:"start"}));
+})();
+</script>
+
 </body>
 </html>
