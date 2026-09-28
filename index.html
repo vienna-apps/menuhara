@@ -830,6 +830,32 @@
     letter-spacing: .06em;
     text-transform: uppercase;
   }
+
+  .clear-filters {
+    grid-column: 1 / -1;
+    justify-self: end;
+    border: 1px solid rgba(49,93,145,.28);
+    background: rgba(255,253,247,.92);
+    color: var(--night);
+    border-radius: 999px;
+    padding: 9px 15px;
+    font: 700 12px Arial, sans-serif;
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .clear-filters:hover {
+    transform: translateY(-1px);
+    background: #fff;
+    border-color: rgba(232,135,85,.55);
+    box-shadow: 0 6px 16px rgba(23,53,95,.08);
+  }
+  .clear-filters:focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+  }
+  @media (max-width: 700px) {
+    .clear-filters { width: 100%; justify-self: stretch; }
+  }
 </style>
 
 </head>
@@ -899,6 +925,7 @@
         <option value="">Harga maksimum</option>
       </select>
     </div>
+    <button type="button" id="clearFilters" class="clear-filters">Clear Filters</button>
   </div>
 
     <div class="table-wrap">
@@ -1061,96 +1088,96 @@
   <!-- Dish photos extracted from Hara - Digital Menu (PDF), 200px WebP -->
   <script>
 const MENU_IMAGES = {
-"Burnt Basque Cheesecake Set": "",
-"Cakue Pandan Custard": "",
-"Cheese Banana Fritter": "",
-"Cassava Thai Sauce": "",
-"Tenderloin Salad": "",
-"Salmon Goma Salad": "",
-"Salmon Ceasar Salad": "",
-"Chicken Quesaddilas": "",
-"Hara Tacos": "",
-"Hara Nachos": "",
-"Butter Cheese Sandwich": "",
-"Crispy Potato": "",
-"Holland Croquette": "",
-"Umami Fries": "",
-"Mix Platter": "",
-"BBQ Chicken Wings": "",
-"Sweet Corn and Carrot Soup": "",
-"Chicken Soup": "",
-"Mushroom Soup": "",
-"French Breakfast": "",
-"Oxtail Fried": "",
-"Spicy Fried Oxtail": "",
-"Oxtail Sambal Matah": "",
-"Hara Soto Ayam": "",
-"Soup Iga Asam Pedas": "",
-"Soto Betawi": "",
-"Oxtail Soup": "",
-"Bubur Ayam Kampung": "",
-"Teri Fried Rice": "",
-"Green Chilli Fried Rice": "",
-"Kampung Fried Rice": "",
-"Hara Fried Rice": "",
-"Yangzhou Fried Rice": "",
-"Timbel Rice Chicken": "",
-"Ayam Bakar Taliwang": "",
-"Mie Godog": "",
-"Chicken Satay": "",
-"Sate Kambing Tegal": "",
-"Bandeng Sambal Matah": "",
-"Saikoro Steak": "",
-"Chicken Katsu Curry": "",
-"Gyuniku": "",
-"Salmon Teriyaki": "",
-"Fish Mentai Rice": "",
-"Dabu Dabu Chicken": "",
-"Chicken Nanban": "",
-"Garlic Ginger Chicken Chop": "",
-"Chicken Parmigiana": "",
-"Chicken Schnitzel": "",
-"Salmon Pesto": "",
-"Tokyo Special Burger": "",
-"Hara US Striploin Steak": "",
-"Hara Tenderloin Steak": "",
-"Steak Diane": "",
-"Jamaican Chicken Steak": "",
-"Australian Grill": "",
-"Spaghetti Beef Bacon Aglio Olio": "",
-"Spaghetti Salmon Aglio Olio": "",
-"Penne Pesto with Chicken": "",
-"Bolognese Spaghettini": "",
-"Tenderloin Creamy Pasta": "",
-"Mac & Cheese": "",
-"Beef Creamy Truffle Rigatoni": "",
-"Milky Toast Tiramisu": "",
-"Milky Toast Matcha": "",
-"Berries Pancakes": "",
-"Fruity Waffle": "",
-"Chocolate Lava Cake": "",
-"Crêpes Suzette": "",
-"Hara Iced Coffee": "",
-"Salted Caramel Cloud Latte": "",
-"Pistachio Cloud Latte": "",
-"Sea Salt Cloud Latte Ice": "",
-"Hazelnut Caramel Latte": "",
-"Punchpresso / Peach Coffee / Dark Berry": "",
-"Yuzu Coffee": "",
-"Cold Brew": "",
-"Mont Blanc": "",
-"Matcha Latte Ice": "",
-"Matchagato": "",
-"Chocolate Ice": "",
-"Berry Iced Tea": "",
-"Passion Fruit Tea": "",
-"Strawberry Mojito / Lychee Mojito": "",
-"Yellow Submarine / Greenrush / Citrusblast / Detox": "",
-"Red Smoothies": "",
-"Hara Big Breakfast": "",
-"Mushroom Melt Toast": "",
-"Sourdough Egg Benedict": "",
-"Chicken and Egg Sandwich": ""
+"Burnt Basque Cheesecake Set": "assets/menu/menu-001.webp",
+"Cakue Pandan Custard": "assets/menu/menu-002.webp",
+"Cheese Banana Fritter": "assets/menu/menu-003.webp",
+"Cassava Thai Sauce": "assets/menu/menu-004.webp",
+"Tenderloin Salad": "assets/menu/menu-005.webp",
+"Salmon Goma Salad": "assets/menu/menu-006.webp",
+"Salmon Ceasar Salad": "assets/menu/menu-007.webp",
+"Chicken Quesaddilas": "assets/menu/menu-008.webp",
+"Hara Tacos": "assets/menu/menu-009.webp",
+"Hara Nachos": "assets/menu/menu-010.webp",
+"Butter Cheese Sandwich": "assets/menu/menu-011.webp",
+"Crispy Potato": "assets/menu/menu-012.webp",
+"Holland Croquette": "assets/menu/menu-013.webp",
+"Umami Fries": "assets/menu/menu-014.webp",
+"Mix Platter": "assets/menu/menu-015.webp",
+"BBQ Chicken Wings": "assets/menu/menu-016.webp",
+"Sweet Corn and Carrot Soup": "assets/menu/menu-017.webp",
+"Chicken Soup": "assets/menu/menu-018.webp",
+"Mushroom Soup": "assets/menu/menu-019.webp",
+"French Breakfast": "assets/menu/menu-020.webp",
+"Oxtail Fried": "assets/menu/menu-021.webp",
+"Spicy Fried Oxtail": "assets/menu/menu-022.webp",
+"Oxtail Sambal Matah": "assets/menu/menu-023.webp",
+"Hara Soto Ayam": "assets/menu/menu-024.webp",
+"Soup Iga Asam Pedas": "assets/menu/menu-025.webp",
+"Soto Betawi": "assets/menu/menu-026.webp",
+"Oxtail Soup": "assets/menu/menu-027.webp",
+"Bubur Ayam Kampung": "assets/menu/menu-028.webp",
+"Teri Fried Rice": "assets/menu/menu-029.webp",
+"Green Chilli Fried Rice": "assets/menu/menu-030.webp",
+"Kampung Fried Rice": "assets/menu/menu-031.webp",
+"Hara Fried Rice": "assets/menu/menu-032.webp",
+"Yangzhou Fried Rice": "assets/menu/menu-033.webp",
+"Timbel Rice Chicken": "assets/menu/menu-034.webp",
+"Ayam Bakar Taliwang": "assets/menu/menu-035.webp",
+"Mie Godog": "assets/menu/menu-036.webp",
+"Chicken Satay": "assets/menu/menu-037.webp",
+"Sate Kambing Tegal": "assets/menu/menu-038.webp",
+"Bandeng Sambal Matah": "assets/menu/menu-039.webp",
+"Saikoro Steak": "assets/menu/menu-040.webp",
+"Chicken Katsu Curry": "assets/menu/menu-041.webp",
+"Gyuniku": "assets/menu/menu-042.webp",
+"Salmon Teriyaki": "assets/menu/menu-043.webp",
+"Fish Mentai Rice": "assets/menu/menu-044.webp",
+"Dabu Dabu Chicken": "assets/menu/menu-045.webp",
+"Chicken Nanban": "assets/menu/menu-046.webp",
+"Garlic Ginger Chicken Chop": "assets/menu/menu-047.webp",
+"Chicken Parmigiana": "assets/menu/menu-048.webp",
+"Chicken Schnitzel": "assets/menu/menu-049.webp",
+"Salmon Pesto": "assets/menu/menu-050.webp",
+"Tokyo Special Burger": "assets/menu/menu-051.webp",
+"Hara US Striploin Steak": "assets/menu/menu-052.webp",
+"Hara Tenderloin Steak": "assets/menu/menu-053.webp",
+"Steak Diane": "assets/menu/menu-054.webp",
+"Jamaican Chicken Steak": "assets/menu/menu-055.webp",
+"Australian Grill": "assets/menu/menu-056.webp",
+"Spaghetti Beef Bacon Aglio Olio": "assets/menu/menu-057.webp",
+"Spaghetti Salmon Aglio Olio": "assets/menu/menu-058.webp",
+"Penne Pesto with Chicken": "assets/menu/menu-059.webp",
+"Bolognese Spaghettini": "assets/menu/menu-060.webp",
+"Tenderloin Creamy Pasta": "assets/menu/menu-061.webp",
+"Mac & Cheese": "assets/menu/menu-062.webp",
+"Beef Creamy Truffle Rigatoni": "assets/menu/menu-063.webp",
+"Milky Toast Tiramisu": "assets/menu/menu-064.webp",
+"Milky Toast Matcha": "assets/menu/menu-065.webp",
+"Berries Pancakes": "assets/menu/menu-066.webp",
+"Fruity Waffle": "assets/menu/menu-067.webp",
+"Chocolate Lava Cake": "assets/menu/menu-068.webp",
+"Crêpes Suzette": "assets/menu/menu-069.webp",
+"Hara Iced Coffee": "assets/menu/menu-070.webp",
+"Salted Caramel Cloud Latte": "assets/menu/menu-071.webp",
+"Pistachio Cloud Latte": "assets/menu/menu-072.webp",
+"Sea Salt Cloud Latte Ice": "assets/menu/menu-073.webp",
+"Hazelnut Caramel Latte": "assets/menu/menu-074.webp",
+"Punchpresso / Peach Coffee / Dark Berry": "assets/menu/menu-075.webp",
+"Yuzu Coffee": "assets/menu/menu-076.webp",
+"Cold Brew": "assets/menu/menu-077.webp",
+"Mont Blanc": "assets/menu/menu-078.webp",
+"Matcha Latte Ice": "assets/menu/menu-079.webp",
+"Matchagato": "assets/menu/menu-080.webp",
+"Chocolate Ice": "assets/menu/menu-081.webp",
+"Berry Iced Tea": "assets/menu/menu-082.webp",
+"Passion Fruit Tea": "assets/menu/menu-083.webp",
+"Strawberry Mojito / Lychee Mojito": "assets/menu/menu-084.webp",
+"Yellow Submarine / Greenrush / Citrusblast / Detox": "assets/menu/menu-085.webp",
+"Red Smoothies": "assets/menu/menu-086.webp",
+"Hara Big Breakfast": "assets/menu/menu-087.webp",
+"Mushroom Melt Toast": "assets/menu/menu-088.webp",
+"Sourdough Egg Benedict": "assets/menu/menu-089.webp",
+"Chicken and Egg Sandwich": "assets/menu/menu-090.webp"
 };
   </script>
 
@@ -1582,6 +1609,16 @@ const MENU_IMAGES = {
   priceMax.addEventListener("change", () => {
     normalizePriceRange("max");
     filterTable();
+  });
+
+  const clearFiltersButton = document.getElementById("clearFilters");
+  clearFiltersButton?.addEventListener("click", () => {
+    searchInput.value = "";
+    categorySelect.value = "";
+    priceMin.value = "";
+    priceMax.value = "";
+    filterTable();
+    searchInput.focus();
   });
 
   // Make headers keyboard accessible as well as clickable.
