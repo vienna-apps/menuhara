@@ -962,6 +962,31 @@
   .page-jump { position:fixed; right:17px; bottom:17px; z-index:60; display:grid; gap:7px; }
   .page-jump button { width:43px; height:43px; border:1px solid rgba(255,255,255,.52); border-radius:999px; background:rgba(8,31,66,.84); color:#fff; box-shadow:0 9px 24px rgba(2,17,39,.24); backdrop-filter:blur(11px); cursor:pointer; font:700 18px/1 Arial,sans-serif; transition:transform .2s ease,background .2s ease; }
   .page-jump button:hover,.page-jump button:focus-visible { transform:translateY(-2px) scale(1.04); background:#e88755; outline:none; }
+  /* Sticky selection rail 2026-09-29 */
+  @media (min-width: 921px) {
+    /* overflow:hidden on the menu wrapper prevented the right rail from
+       following the viewport. clip keeps the rounded visual boundary without
+       creating a scroll container, so sticky can work correctly. */
+    .menu-card { overflow: clip; }
+
+    .summary-card {
+      position: sticky;
+      top: 76px;
+      align-self: start;
+      max-height: calc(100vh - 94px);
+      display: flex;
+      flex-direction: column;
+      z-index: 3;
+    }
+
+    .summary-items {
+      flex: 1 1 auto;
+      min-height: 0;
+      max-height: none;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
   @media (max-width:700px) {
     .quick-nav { position:relative; top:auto; width:100%; max-width:100%; margin-top:-8px; border-radius:16px; }
     .quick-nav a { flex:1 1 auto; padding-inline:11px; }
