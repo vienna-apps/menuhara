@@ -427,6 +427,21 @@
     line-height: 1;
     margin-top: -1px;
   }
+  .modifier-badge {
+    display: inline-flex;
+    margin-left: 8px;
+    padding: 3px 6px;
+    border-radius: 999px;
+    background: rgba(232,135,85,.11);
+    color: #b85f38;
+    font: 800 9px/1 Arial, sans-serif;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    vertical-align: 2px;
+    white-space: nowrap;
+  }
+  .modifier-row-header .category-row-name::before { content: "＋"; }
+  .modifier-row-header .category-row-count { text-transform: none; letter-spacing: 0; }
 
   .menu-check {
     width: 18px;
@@ -1079,9 +1094,9 @@
       <table id="menuTable">
     <thead>
       <tr>
-        <th onclick="sortTable(0)">Nama Menu</th>
-        <th onclick="sortTable(1)">Kategori</th>
-        <th onclick="sortPriceTable(2)">Harga (dalam Ribuan Rp)</th>
+        <th data-sort-column="0">Nama Menu</th>
+        <th data-sort-column="1">Kategori</th>
+        <th data-sort-column="2">Harga (dalam Ribuan Rp)</th>
       </tr>
     </thead>
     <tbody>
@@ -1466,6 +1481,7 @@ function getMenuDescription(name, category) {
   }
 
   function renderGroups(columnIndex, direction) {
+    tbody.querySelector(".modifier-row-header")?.remove();
     const factor = direction === "desc" ? -1 : 1;
     const compare = (a, b) => {
       const aValue = getCellValue(a, columnIndex);
@@ -1483,31 +1499,44 @@ function getMenuDescription(name, category) {
 
     groups.forEach(group => {
       // Sorting by category reorders the groups; items inside stay A–Z.
-      const rows = [...group.rows].sort(columnIndex === 1 ? (a, b) => compare(a, b) * factor : compare);
+      const rows = [...group.rows].sort(compare);
       tbody.appendChild(group.header);
       rows.forEach(row => tbody.appendChild(row));
     });
   }
 
+  /* Modifier-aware sorting 2026-09-29 */
   function renderGlobal(columnIndex, direction) {
+    tbody.querySelector(".modifier-row-header")?.remove();
     const factor = direction === "desc" ? -1 : 1;
-    const rows = categoryGroups.flatMap(group => group.rows);
+    const allRows = categoryGroups.flatMap(group => group.rows);
+    const primaryRows = allRows.filter(row => row.dataset.orderRole !== "modifier");
+    const modifierRows = allRows.filter(row => row.dataset.orderRole === "modifier");
 
-    rows.sort((a, b) => {
+    const comparator = (a, b) => {
       const aValue = getCellValue(a, columnIndex);
       const bValue = getCellValue(b, columnIndex);
       const result = typeof aValue === "number" && typeof bValue === "number"
         ? aValue - bValue
         : String(aValue).localeCompare(String(bValue), "id", { sensitivity: "base" });
 
-      // For equal values keep a deterministic A–Z name fallback.
       return result * factor
         || getCellValue(a, 0).localeCompare(getCellValue(b, 0), "id", { sensitivity: "base" });
-    });
+    };
 
-    // Remove the visual category separators while doing a true global sort.
+    primaryRows.sort(comparator);
+    modifierRows.sort(comparator);
+
     categoryGroups.forEach(group => group.header.remove());
-    rows.forEach(row => tbody.appendChild(row));
+    primaryRows.forEach(row => tbody.appendChild(row));
+
+    if (modifierRows.length) {
+      const modifierHeader = document.createElement("tr");
+      modifierHeader.className = "category-row modifier-row-header";
+      modifierHeader.innerHTML = '<td colspan="3"><span class="category-row-name">Add-ons / Modifiers</span><span class="category-row-count">pilih bersama menu utama</span></td>';
+      tbody.appendChild(modifierHeader);
+      modifierRows.forEach(row => tbody.appendChild(row));
+    }
   }
 
   function updateCategoryHeaders() {
@@ -1761,6 +1790,13 @@ function getMenuDescription(name, category) {
       row.dataset.itemPrice = price;
       row.dataset.itemDescription = getMenuDescription(name, category);
 
+      const isBeverageAddon = category === "Add-ons";
+      const isSoupModifier = name === "Upgrade garlic bread with sourdough bread";
+      row.dataset.orderRole = (isBeverageAddon || isSoupModifier) ? "modifier" : "primary";
+      if (isBeverageAddon || isSoupModifier) {
+        row.dataset.modifierLabel = isSoupModifier ? "Soup add-on" : "Beverage add-on";
+      }
+
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.className = "menu-check";
@@ -1780,6 +1816,12 @@ function getMenuDescription(name, category) {
       label.setAttribute("aria-label", "Lihat deskripsi " + name);
       label.textContent = name;
       nameCell.appendChild(label);
+      if (row.dataset.orderRole === "modifier") {
+        const badge = document.createElement("span");
+        badge.className = "modifier-badge";
+        badge.textContent = row.dataset.modifierLabel || "Add-on";
+        nameCell.appendChild(badge);
+      }
     });
   }
 
@@ -1960,10 +2002,11 @@ function getMenuDescription(name, category) {
     searchInput.focus();
   });
 
-  // Make headers keyboard accessible as well as clickable.
+  // Make sorting explicit in JS instead of relying on inline onclick attributes.
   headers.forEach((header, index) => {
     header.setAttribute("tabindex", "0");
     header.setAttribute("role", "button");
+    header.addEventListener("click", () => sortTable(index));
     header.addEventListener("keydown", event => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
