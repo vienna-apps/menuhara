@@ -395,6 +395,38 @@
     color: var(--night);
     font: 700 20px Arial, sans-serif;
   }
+  .clear-selections {
+    width: 100%;
+    min-height: 42px;
+    margin-top: 14px;
+    border: 1px solid rgba(232,135,85,.35);
+    border-radius: 10px;
+    background: rgba(232,135,85,.08);
+    color: #b85f38;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font: 700 12px/1 Arial, sans-serif;
+    cursor: pointer;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease, opacity .18s ease;
+  }
+  .clear-selections:hover:not(:disabled),
+  .clear-selections:focus-visible:not(:disabled) {
+    transform: translateY(-1px);
+    background: rgba(232,135,85,.16);
+    border-color: rgba(232,135,85,.55);
+    outline: none;
+  }
+  .clear-selections:disabled {
+    opacity: .42;
+    cursor: not-allowed;
+  }
+  .clear-selections span {
+    font-size: 18px;
+    line-height: 1;
+    margin-top: -1px;
+  }
 
   .menu-check {
     width: 18px;
@@ -1185,6 +1217,10 @@
           <div class="budget-meter" aria-hidden="true"><span class="budget-meter-fill" id="budgetFill"></span></div>
           <p class="budget-status" id="budgetStatus" role="status">Sisa budget Rp 200.000</p>
         </div>
+        <button type="button" class="clear-selections" id="clearSelections" disabled>
+          <span aria-hidden="true">×</span>
+          Hapus semua selection
+        </button>
       </aside>
     </div>
   </section>
@@ -1774,6 +1810,8 @@ function getMenuDescription(name, category) {
     summaryTotal.textContent = formatRupiah(total);
     summaryEmpty.hidden = selected.length > 0;
     summaryCard.classList.toggle("has-selection", selected.length > 0);
+    const clearSelectionsButton = document.getElementById("clearSelections");
+    if (clearSelectionsButton) clearSelectionsButton.disabled = selected.length === 0;
     updateBudget(total);
     if (oldCount !== selected.length) {
       summaryCount.classList.remove("bump");
@@ -1840,6 +1878,15 @@ function getMenuDescription(name, category) {
   priceMax.addEventListener("change", () => {
     normalizePriceRange("max");
     filterTable();
+  });
+
+  const clearSelectionsButton = document.getElementById("clearSelections");
+  clearSelectionsButton?.addEventListener("click", () => {
+    tbody.querySelectorAll(".menu-check:checked").forEach(checkbox => {
+      checkbox.checked = false;
+      checkbox.closest("tr")?.classList.remove("is-selected");
+    });
+    updateSummary();
   });
 
   const clearFiltersButton = document.getElementById("clearFilters");
