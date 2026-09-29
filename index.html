@@ -1401,6 +1401,9 @@ function getMenuDescription(name, category) {
     1: "none",
     2: "none"
   };
+  /* Global table sorting fix 2026-09-29 */
+  let sortMode = "grouped"; // default presentation: category sections
+
 
   function filterTable() {
     const search = searchInput.value.trim().toLowerCase();
@@ -1454,7 +1457,9 @@ function getMenuDescription(name, category) {
       categoryGroups.push({ name, header, rows, order: categoryGroups.length });
     });
 
-    sortDirection[0] = "asc";
+    // Default view stays grouped by category, with names A–Z inside each group.
+    // No column is marked as sorted until the user explicitly clicks a header.
+    sortMode = "grouped";
     renderGroups(0, "asc");
     updateSortIndicators();
     updateCategoryHeaders();
@@ -1484,10 +1489,32 @@ function getMenuDescription(name, category) {
     });
   }
 
+  function renderGlobal(columnIndex, direction) {
+    const factor = direction === "desc" ? -1 : 1;
+    const rows = categoryGroups.flatMap(group => group.rows);
+
+    rows.sort((a, b) => {
+      const aValue = getCellValue(a, columnIndex);
+      const bValue = getCellValue(b, columnIndex);
+      const result = typeof aValue === "number" && typeof bValue === "number"
+        ? aValue - bValue
+        : String(aValue).localeCompare(String(bValue), "id", { sensitivity: "base" });
+
+      // For equal values keep a deterministic A–Z name fallback.
+      return result * factor
+        || getCellValue(a, 0).localeCompare(getCellValue(b, 0), "id", { sensitivity: "base" });
+    });
+
+    // Remove the visual category separators while doing a true global sort.
+    categoryGroups.forEach(group => group.header.remove());
+    rows.forEach(row => tbody.appendChild(row));
+  }
+
   function updateCategoryHeaders() {
     categoryGroups.forEach(group => {
       const visible = group.rows.filter(row => row.style.display !== "none").length;
-      group.header.style.display = visible ? "" : "none";
+      // Global sorting (Name / Price) must not be interrupted by category headers.
+      group.header.style.display = sortMode === "grouped" && visible ? "" : "none";
       group.header.querySelector(".category-row-count").textContent = visible + " menu";
     });
   }
@@ -1516,8 +1543,17 @@ function getMenuDescription(name, category) {
     });
     sortDirection[columnIndex] = nextDirection;
 
-    // Sorting happens inside each category group so the headers stay intact.
-    renderGroups(columnIndex, nextDirection);
+    if (columnIndex === 1) {
+      // Category sort keeps category sections.
+      sortMode = "grouped";
+      renderGroups(columnIndex, nextDirection);
+    } else {
+      // Name and Price are true global sorts across every menu item.
+      sortMode = "global";
+      renderGlobal(columnIndex, nextDirection);
+    }
+
+    updateCategoryHeaders();
     updateSortIndicators();
     revealRows();
   }
